@@ -112,7 +112,7 @@ function startGame(guess) {
     if (!guessedWord.includes("_")) {
         result.innerHTML = "You Win!"
         word.innerHTML = `The word was <b>${wordToBeGuessed.toUpperCase()}</b>`;
-        tries.innerHTML = `Tries: ${6 - lives}`;
+        tries.innerHTML = `Lives used: ${6 - lives}`;
         endWrapper.classList.remove("hidden");
         
     } else if (lives <= 0) {

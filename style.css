@@ -611,12 +611,25 @@ html, body {
         flex-wrap: wrap;
         justify-content: center;
         gap: 2px;
-        padding: 1rem;
+        padding-bottom: 4rem;
         background-color: #DCDCDC;
     }
 }
 
 @media (max-width: 400px) {
+    .start-card {
+        height: 90%;
+        width: 90%;
+    }
+
+    .start-card h1 {
+        font-size: 3.8rem;
+    }
+
+    .end-card {
+        height: 90%;
+        width: 90%;
+    }
     .hangman {
         left: 7rem;
     }
