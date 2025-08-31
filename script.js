@@ -1,5 +1,34 @@
 const container = document.getElementById("letter-choices");
 const hangmanBody = document.getElementById("hangman-body");
+const livesLeft = document.getElementById("lives-left");
+const gussedLettersContainer = document.getElementById("guessed-letters");
+const instructions = document.getElementById("instructions");
+const instructionWrapper = document.getElementById("instruction-wrapper");
+const close = document.getElementById("close");
+const startBtn = document.getElementById("start");
+const startWrapper = document.getElementById("start-wrapper");
+const endWrapper = document.getElementById("end-wrapper");
+const result = document.getElementById("result");
+const word = document.getElementById("word");
+const tries = document.getElementById("tries");
+const playAgain = document.getElementById("play-again");
+
+startBtn.addEventListener("click", ()=> {
+    startWrapper.classList.add("hidden");
+});
+
+instructions.addEventListener("click", () => {
+    instructionWrapper.classList.add("visible");
+});
+
+close.addEventListener("click", () => {
+    instructionWrapper.classList.remove("visible");
+});
+
+playAgain.addEventListener("click", () => {
+    location.reload();
+});
+
 const words = [
   "apple",
   "chair",
@@ -17,6 +46,7 @@ let guessedLetters = [];
 
 let n = getRandomInt(0, words.length - 1);
 let lives = 6;
+livesLeft.textContent = lives.toString();
 let wordToBeGuessed = words[n];
 
 let guessedWord = [];
@@ -43,6 +73,7 @@ for (let i = 65; i <= 90; i++) {
 
 let currentChild = hangmanBody.firstElementChild;
 currentChild = currentChild.nextElementSibling;
+
 function startGame(guess) {
     if (lives <= 0 || !guessedWord.includes("_")) {
         let decision = window.confirm("Game is already over, want another round?");
@@ -54,13 +85,12 @@ function startGame(guess) {
         }
     }
 
-    if (guessedLetters.includes(guess)) {
+    if (guessedLetters.includes(guess) && lives > 0) {
         alert("Letter is already guessed!");
         return;
     }
 
     guessedLetters.push(guess);
-
     
     let correctGuess = false;
     for (let i = 0; i < wordToBeGuessed.length; i++) {
@@ -74,13 +104,21 @@ function startGame(guess) {
         currentChild.classList.add("visible");
         currentChild = currentChild.nextElementSibling;
         lives--;
+        livesLeft.textContent = lives.toString();
+        gussedLettersContainer.innerHTML += guess.toUpperCase() + " ";
         alert("Wrong guess, lives left: " + lives);
     }
 
     if (!guessedWord.includes("_")) {
-        alert("You won!");
+        result.innerHTML = "You Win!"
+        word.innerHTML = `The word was <b>${wordToBeGuessed.toUpperCase()}</b>`;
+        tries.innerHTML = `Tries: ${6 - lives}`;
+        endWrapper.classList.remove("hidden");
+        
     } else if (lives <= 0) {
-        alert("you lose");
+        result.innerHTML = "You Lose!"
+        word.innerHTML = `The word was <b>${wordToBeGuessed.toUpperCase()}</b>`;
+        endWrapper.classList.remove("hidden");
     }
 
     textBox.innerHTML = guessedWord.join(" ");

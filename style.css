@@ -25,14 +25,14 @@ html, body {
 
 .hangman-wrapper {
     width: 100%;
-    height: 100%;
+    height: 50%;
     display: flex;
     justify-content: center;
     position: relative;
 }
 
 .hangman-wrapper h1 {
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 .hangman {
@@ -40,6 +40,35 @@ html, body {
     width: 50%;
     position: absolute;
     bottom: 0;
+    left: 40%;
+}
+
+.guessed-letters {
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    padding: 4px;
+    height: 16rem;
+    width: 25rem;
+    border: 2px solid black;
+    font-size: 1.5rem;
+}
+
+.lives-left {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    padding: 4px;
+    height: 16rem;
+    width: 25rem;
+    border: 2px solid black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.lives-left h1 {
+    font-size: 8rem;
 }
 
 .vertical-line {
@@ -48,17 +77,17 @@ html, body {
     width: 2px;
     position: absolute;
     bottom: 0;
-    left: 2rem;
+    left: 0;
 }
 
 .horizontal-line {
     height: 2px;
     border: 2px black solid;
-    width: 30%;
+    width: 20%;
     position: absolute;
-    left: 2rem;
+    left: 0;
     top: 10%;
-}
+    }
 
 .rope {
     height: 15%;
@@ -66,16 +95,16 @@ html, body {
     width: 2px;
     position: absolute;
     top: 10%;
-    left: 6.6rem;
+    left: 8.3rem;
 }
 
 .head {
-    width: 15%;
-    height: 20%;
+    width: 3rem;
+    height: 3rem;
     border: 2px black solid;
     border-radius: 50%;
     position: absolute;
-    left: 5.5rem;
+    left: 6.9rem;
     top: 25%;
 }
 
@@ -84,8 +113,8 @@ html, body {
     height: 25%;
     border: 1px solid black;
     position: absolute;
-    left: 6.6rem;
-    top: 45%;
+    left: 8.3rem;
+    top: 46%;
 }
 
 .left-arm,
@@ -98,14 +127,14 @@ html, body {
 
 .left-arm {
     transform: skewX(30deg);
-    top: 45%;
-    left: 6.9rem;
+    top: 46%;
+    left: 8.7rem;
 }
 
 .right-arm {
     transform: skewX(-30deg);
-    top: 45%;
-    left: 6.2rem;
+    top: 46%;
+    left: 7.9rem;
 }
 
 .left-leg,
@@ -119,13 +148,13 @@ html, body {
 .left-leg {
     transform: skewX(30deg);
     top: 70%;
-    left: 6.9rem; 
+    left: 8.7rem; 
 }
 
 .right-leg {
     transform: skewX(-30deg);
     top: 70%;
-    left: 6.3rem;
+    left: 7.9rem;
 }
 
 .head,
@@ -157,12 +186,15 @@ html, body {
     background-color: #F3F2EC;
     border-radius: 2rem;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 3rem;
 }
 
 .letters {
-    height: 3rem;
-    width: 4.5rem;
+    height: 5rem;
+    width: 5.7rem;
     border-radius: 12px;
     border: none;
     font-size: 1.5rem;
@@ -187,6 +219,234 @@ html, body {
     background-color: #DCDCDC;
 }
 
+.start-wrapper {
+    height: 100vh;
+    width: 100vw;
+    z-index: 2999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #F3F2EC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-card {
+    height: 80%;
+    width: 50%;
+    border: 0.5rem solid black;
+    border-radius: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+}
+
+.start-card h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 4rem;
+    position: absolute;
+    top: 9rem;
+}
+
+.start {
+    width: 70%;
+    height: 4rem;
+    margin-top: 14rem;
+    border-radius: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ececec;
+    background-color: black;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.start:hover,
+.play-again:hover {
+    color: black;
+    background-color: #ececec;
+    cursor: pointer;
+}
+
+.start-card h3 {
+    font-weight: 400;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.instruction-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3999;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f3f2ecd0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.visible {
+    display: flex;
+}
+
+.instructions {
+    border: 0.5rem solid black;
+    height: 80%;
+    width: 50%;
+    border-radius: 4rem;
+    background-color: #ececec;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.9s ease;
+}
+
+.instructions h1 {
+    font-size: 3rem;
+    margin-top: 7rem;
+}
+
+.instructions p {
+    margin-top: 2rem;
+    font-size: 1.3rem;
+}
+
+.close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.show {
+    display: block;
+}
+
+.end-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 6999;
+    background-color: #f3f2ecd0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.end-card {
+    background-color: #F3F2EC;
+    height: 80%;
+    width: 50%;
+    border: 0.5rem solid black;
+    border-radius: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.result {
+    font-size: 4rem;
+    font-weight: 700;
+    position: absolute;
+    top: 4rem;
+}
+
+.word {
+    margin-top: 8rem;
+    font-size: 2rem;
+}
+
+.tries {
+    font-size: 2rem;
+}
+
+.play-again {
+    width: 70%;
+    height: 4rem;
+    margin-top: 2rem;
+    border-radius: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ececec;
+    background-color: black;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .start-card {
+        height: 80%;
+        width: 80%;
+    }
+
+    .letters {
+        height: 3.3rem;
+        width: 5rem;
+    }
+
+    .guessed-letters {
+        width: 13rem;
+        left: 1rem;
+        border-radius: 12px;
+        padding: 1rem;
+    }
+
+    .guessed-letters h2 {
+        font-size: 1.2rem;
+    }
+
+    .lives-left {
+        width: 13rem;
+        right: 1rem;
+        border-radius: 12px;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .rope {
+        left: 5rem;
+    }
+
+    .head {
+        left: 3.6rem;
+    }
+
+    .body {
+        left: 5.1rem;
+    }
+
+    .left-arm {
+        left: 5.56rem;
+    }
+    .right-arm {
+        left: 4.66rem;
+    }
+
+    .left-leg {
+        left: 5.5rem;
+    }
+
+    .right-leg {
+        left: 4.7rem;
+    }
+}
+
 @media (max-width: 600px) {
     .hangman-wrapper {
         width: 100%;
@@ -198,4 +458,230 @@ html, body {
         width: 100%;
 
     }
+
+    .hangman-wrapper h1 {
+    font-size: 3rem;
+    }
+
+    .hangman {
+        height: 70%;
+        width: 50%;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .vertical-line {
+        height: 90%;
+        border: 2px black solid;
+        width: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 2rem;
+    }
+
+    .horizontal-line {
+        height: 2px;
+        border: 2px black solid;
+        width: 30%;
+        position: absolute;
+        left: 2rem;
+        top: 10%;
+    }
+
+    .rope {
+        height: 15%;
+        border: 2px solid black;
+        width: 2px;
+        position: absolute;
+        top: 10%;
+        left: 6.6rem;
+    }
+
+    .head {
+        width: 15%;
+        height: 20%;
+        border: 2px black solid;
+        border-radius: 50%;
+        position: absolute;
+        left: 5.5rem;
+        top: 25%;
+    }
+
+    .body {
+        width: 2px;
+        height: 25%;
+        border: 1px solid black;
+        position: absolute;
+        left: 6.6rem;
+        top: 45%;
+    }
+
+    .left-arm,
+    .right-arm {
+        width: 1px;
+        height: 10%;
+        border:1px solid black;
+        position: absolute;
+    }
+
+    .left-arm {
+        transform: skewX(30deg);
+        top: 45%;
+        left: 6.9rem;
+    }
+
+    .right-arm {
+        transform: skewX(-30deg);
+        top: 45%;
+        left: 6.2rem;
+    }
+
+    .left-leg,
+    .right-leg {
+        width: 1px;
+        height: 10%;
+        border:1px solid black;
+        position: absolute;
+    }
+
+    .left-leg {
+        transform: skewX(30deg);
+        top: 70%;
+        left: 6.9rem; 
+    }
+
+    .right-leg {
+        transform: skewX(-30deg);
+        top: 70%;
+        left: 6.3rem;
+    }
+
+    .head,
+    .body,
+    .left-arm,
+    .left-leg,
+    .right-arm,
+    .right-leg {
+        display: none;
+    }
+
+    .visible {
+        display: block;
+    }
+
+    .word-box {
+        height: 15%;
+        width: 100%;
+        background-color: #DCDCDC;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+    }
+
+    .text-box {
+        width: 90%;
+        height: 90%;
+        background-color: #F3F2EC;
+        border-radius: 2rem;
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    .letters {
+        height: 3rem;
+        width: 4.5rem;
+        border-radius: 12px;
+        border: none;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-left: 2px;
+        margin-right: 2px;
+        transition: all 0.2s ease;
+    }
+
+    .letters:hover {
+        background-color: #c2c2c2;
+    }
+
+    .letter-choices {
+        height: 40%;
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2px;
+        padding: 1rem;
+        background-color: #DCDCDC;
+    }
+}
+
+@media (max-width: 400px) {
+    .hangman {
+        left: 7rem;
+    }
+
+    .guessed-letters {
+        height: 7rem;
+        top: 5rem;
+        left: 0;
+        width: 10rem;
+        border: none;
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .lives-left {
+        height: 7rem;
+        top: 4.8rem;
+        left: 65%;
+        width: 10rem;
+        border: none;
+        font-size: 12px;
+        padding: 0;
+    }
+
+    .guessed-letters h2 {
+        font-size: 14px;
+    }
+
+    .rope {
+        left: 5.5rem;
+    }
+
+    .head {
+        left: 4.7rem;
+    }
+
+    .body {
+        left: 5.6rem;
+    }
+
+    .left-arm {
+        left: 6rem;
+    }
+
+    .right-arm {
+        left: 5.25rem;
+    }
+
+    .left-leg {
+        left: 5.9rem;
+    }
+
+    .right-leg {
+        left: 5.4rem;
+    }
+
+    .letter-choices {
+        height: 60%;
+        padding: none;
+    }
+
+    .letters {
+        height: 4rem;
+        width: 2rem;
+    }
+
+
 }

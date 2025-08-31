@@ -10,6 +10,9 @@
     <div class="container-wrapper">
         <div class="hangman-wrapper">
             <h1>HANGMAN</h1>
+            <div class="guessed-letters" id="guessed-letters">
+                <h2>Guessed Letters:</h2>
+            </div>
             <div class="hangman">
                 <div class="vertical-line"></div>
                 <div class="horizontal-line"></div>
@@ -23,7 +26,11 @@
                     <div class="left-leg"></div>
                     <div class="right-leg"></div>
                 </div>
+            </div>
 
+            <div class="lives-left">
+                <h2>Lives Left:</h2>
+                <h1 id="lives-left"></h1>
             </div>
         </div>
 
@@ -34,6 +41,38 @@
         </div>
         <div class="letter-choices" id="letter-choices">
         
+        </div>
+    </div>
+
+    <div class="start-wrapper" id="start-wrapper">
+        <div class="start-card">
+            <h1>HANGMAN</h1>
+            <button class="start" id="start">
+                PLAY
+            </button>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h3 id="instructions">How to Play?</h3>
+        </div>
+    </div>
+
+    <div class="instruction-wrapper" id="instruction-wrapper">
+        <div class="instructions">
+            <span class="close" id="close"> &#x2716;</span>
+            <h1>How to Play:</h1>
+
+            <p>Try to guess the hidden word by picking letters. Each wrong guess costs you 1 of your 6 lives—can you solve it before the hangman is complete?</p>
+        </div>
+    </div>
+
+    <div class="end-wrapper hidden" id="end-wrapper">
+        <div class="end-card">
+            <div class="result" id="result">You Won</div>
+            <div class="word" id="word">The word was apple</div>
+            <div class="tries" id="tries">6 tries</div>
+            <button class="play-again" id="play-again">Play Again</button>
         </div>
     </div>
 </body>
