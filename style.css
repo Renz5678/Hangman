@@ -695,6 +695,22 @@ html, body {
         height: 4rem;
         width: 2rem;
     }
+}
 
+@media (max-width: 400px) {
+    .start-card h1 {
+        font-size: 3.4rem;
+    }
 
+    .letters {
+        width: 2.5rem;
+    }
+
+    .letter-choices {
+        padding-bottom: 4rem;
+    }
+
+    .word {
+        text-align: center;
+    }
 }
